@@ -11,6 +11,8 @@ client = discord.Client(intents=intents)  # 还是抄的
 async def on_message(message):  # 接收到消息触发下方代码
     if message.author == client.user:  # 如果消息发送者为BOT本身不做处理，防止死循环
         return  # 返回
+    if message.author.name == '达小草（QQDC互联）':  # 这里请替换成你WEBHOOK机器人的名称，否则会重复发送
+        return
     if message.channel.id == 频道ID:  # 验证是否为目标频道ID 记得改成你需要互通的频道ID
         requests.get(url='http://记得改这里啊IP:PROT你go-cqhttp的HTTPAPI地址/send_msg?group_id=要发的群号&message=[Discord]' + message.author.name + ": " + message.content)  # 通过 HTTP API 向 GO-CQHTTP 发送消息 , 详细请查阅 GO-CQHTTP 官方文档
 
